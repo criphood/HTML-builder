@@ -11,7 +11,7 @@ fs.readdir(direct, (err, files) => {
     fs.stat(filePath, (err, stats) => {
       if (stats.isFile()) {
         const fileInfo = file.split('.');
-        const size = (stats['size'] / 1000) + 'kb';
+        const size = (stats['size'] / 1024).toFixed(3) + 'kb';
         fileInfo.push(size);
         stdout.write(`${ fileInfo.join(' - ') }\n`);
       }
